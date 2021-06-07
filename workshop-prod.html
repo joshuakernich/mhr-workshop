@@ -34,15 +34,6 @@
 		.screen{
 			width: 450px;
 			height: 800px;
-			position: relative;
-		}
-
-		.facilitator-screen{
-
-		}
-
-
-		.screen{
 			position: absolute;
 			top: 0px;
 			left: 0px;
@@ -105,17 +96,17 @@
 
 		@font-face {
 			font-family: "HeaderFont";
-			src: url("./font-teko/Teko-Light.ttf");
+			src: url("./font/Teko-Light.ttf");
 		}
 
 		@font-face {
 			font-family: "BodyFont";
-			src: url("./Overpass-Light.ttf");
+			src: url("./font/Overpass-Light.ttf");
 		}
 
 		@font-face {
 		  font-family: BodyFont;
-		  src: url("./Overpass-Bold.ttf");
+		  src: url("./font/Overpass-Bold.ttf");
 		  font-weight: bold;
 		}	
 
@@ -827,9 +818,9 @@
 		}
 
 		.black-screen{
-			background: url(./blurry-black-bg.jpeg);
+			
 			background-color: black;
-			background-image: url(./chevron-bg-opaque.svg);
+			background-image: url(./img/chevron-bg-opaque.svg);
 			background-size: cover;
 			animation-name: scrollbg;
 			animation-duration: 5s;
@@ -838,12 +829,12 @@
 		}
 
 		.white-screen{
-			background: url(./blurry-white-bg.jpeg);
-			background-size: cover;
+			
+			
 			color: black;
 
 
-			background: url(./chevron-bg.svg);
+			background: url(./img/chevron-bg.svg);
 			background-color: #f8f8f8;
 			background-size: cover;
 			animation-name: scrollbg;
@@ -896,10 +887,6 @@
 			}
 		}
 
-		
-
-
-		
 
 		.mini-icon{
 			width: 20px;
@@ -909,7 +896,7 @@
 			display: inline-block;
 			vertical-align: middle;
 			margin-right: 5px;
-			background-image: url('./app-icon.png');
+			background-image: url('./img/app-icon.png');
 			background-size: cover;
 			background-color: #1C44CE;
 		}
@@ -922,7 +909,7 @@
 			display: inline-block;
 			vertical-align: middle;
 			margin-right: 5px;
-			background-image: url('./app-icon.png');
+			background-image: url('./img/app-icon.png');
 			background-size: cover;
 			background-color: #1C44CE;
 			overflow: hidden;
@@ -995,7 +982,7 @@
 			
 			width: 350px;
 			height: 200px;
-			background-image: url('./aotg-white.svg');
+			background-image: url('./img/aotg-white.svg');
 			
 			display: block;
 			background-size: 100%;
@@ -1007,7 +994,7 @@
 		
 
 		.logo.black{
-			background-image: url('./aotg-black.svg');
+			background-image: url('./img/aotg-black.svg');
 		}
 
 		.screen-faux-dashboard h2{
@@ -1036,7 +1023,7 @@
 			background: #1C44CE;
 			margin: auto;
 			border-radius: 20px;
-			background-image: url('./icon/Choose your Thoughts.svg');
+			background-image: url('./img/Choose your Thoughts.svg');
 			background-size: 60%;
 			background-position: center 10px;
 			background-repeat: no-repeat;
@@ -1185,7 +1172,7 @@
 		.qr-code{
 			width: 250px;
 			height: 250px;
-			background-image: url('./qr-demo.png');
+			background-image: url('./img/qr-demo.png');
 			background-size: cover;
 			border-radius:10px;
 			border:4px solid white;
@@ -1207,7 +1194,7 @@
 			margin: auto;
 			border-radius: 10px;
 
-			background-image: url('./app-icon.png');
+			background-image: url('./img/app-icon.png');
 			background-size: cover;
 			background-color: #1C44CE;
 		}
@@ -1252,19 +1239,19 @@
 		}
 
 		.control-pause-play{
-			background-image: url('./icon/video-pause-circle.svg');
+			background-image: url('./img/video-pause-circle.svg');
 		}
 
 		.control-rw{
-			background-image: url('./icon/video-rw.svg');
+			background-image: url('./img/video-rw.svg');
 		}
 
 		.control-ff{
-			background-image: url('./icon/video-ff.svg');
+			background-image: url('./img/video-ff.svg');
 		}
 
 		.video-controlled.paused .control-pause-play{
-			background-image: url('./icon/video-play-circle.svg');
+			background-image: url('./img/video-play-circle.svg');
 		}
 
 		
@@ -1883,7 +1870,7 @@
 
 			
 			<div class="strategy-banner full-span">
-				<img src="./icon/Choose your Thoughts.svg" width="120" style='width:100;display:block;margin:auto;'>
+				<img src="./img/Choose your Thoughts.svg" width="120" style='width:100;display:block;margin:auto;'>
 				<br>
 				<h1 style='font-size: 2.5rem;'>CHOOSE YOUR THOUGHTS</h1>	
 			</div>
@@ -1894,7 +1881,7 @@
 		<div class='screen is-for-facilitator white-screen click-to-next-screen vertically-centered'>
 			<div class="instruct">
 				
-				<img src="./icon/C1-thumb.png" width="120" style='width:120;display:block;margin:auto;'><br>
+				<img src="./img/C1-thumb.png" width="120" style='width:120;display:block;margin:auto;'><br>
 				<h1>POSITIVE THOUGHTS</h1>
 					<p><b>Positive thoughts</b> are optimistic and motivational.</p>
 					<li>It will be fine.</li>
@@ -1906,7 +1893,7 @@
 		</div>
 		<div class='screen is-for-facilitator white-screen click-to-next-screen vertically-centered'>
 			<div class="instruct">
-				<img src="./icon/C1-lightbulb.png" width="120" style='width:120;display:block;margin:auto;'><br>
+				<img src="./img/C1-lightbulb.png" width="120" style='width:120;display:block;margin:auto;'><br>
 				<h1>INSTRUCTIVE THOUGHTS</h1>
 				
 					<p><b>Instructive thoughts</b> are actionable.</p>
@@ -1923,7 +1910,7 @@
 			<div class="full-span">
 				<h1>PHONES UP</h1>
 				<br>
-				<img src="./icon/Phones-up.svg" width="200">
+				<img src="./img/Phones-up.svg" width="200">
 				<br><br>
 				<h1>GET READY...</h1>
 			</div>
@@ -1941,52 +1928,16 @@
 			</audio>
 		</div>
 		
-		<!--div class='screen is-for-facilitator white-screen'>
-			<div class="remember">
-			<div class='remember-header'>
-				<h2>REMEMBER</h2>
-				<img src="./icon/Choose your Thoughts.svg" width="120" style='width:100;display:block;margin:auto;'>
-				<h1>Choose your Thoughts</h1>
-			</div>
-			<div class="instruct">
-				<img src="./icon/C1-thumb.png" width="120" style='width:120;display:block;margin:auto;'>
-						<p>Choose <b>Positive thoughts</b> that are optimistic and motivational.</p>
-						<li>It will be fine.</li>
-						<li>No problemo.</li>
-						<li>You've got this.</li>
-						<li>You can do it.</li>
-					
-				</div>
-			</div>
-		</div>
-		<div class='screen is-for-facilitator white-screen'>
-			<div class="remember">
-			<div class='remember-header'>
-				<h2>REMEMBER</h2>
-				<img src="./icon/Choose your Thoughts.svg" width="120" style='width:100;display:block;margin:auto;'>
-				<h1>Choose your Thoughts</h1>
-			</div>
-			<div class="instruct">
-					<img src="./icon/C1-lightbulb.png" width="120" style='width:120;display:block;margin:auto;'>
-						<p>Choose <b>instructive thoughts</b> that are actionable and focus on what you should do.</p>
-						<li>I need to keep training.</li>
-						<li>I need to work harder.</li>
-						<li>I should work on my catching.</li>
-					
-				</div>
-				
-			</div>
-		</div-->
 		<div class="screen white-screen click-to-next-screen">
 			<div class='remember-header'>
 				<h2>REMEMBER</h2>
-				<img src="./icon/Choose your Thoughts.svg" width="120" style='display:inline-block;margin:auto;'>
+				<img src="./img/Choose your Thoughts.svg" width="120" style='display:inline-block;margin:auto;'>
 				<h1>Choose your Thoughts</h1>
 
 			</div>
 			<br>
 			<div style="text-align: left;margin-left: 30px;font-size: 1.1rem;">
-				<img src="./icon/C1-thumb.png" width="80" style='padding:20px;vertical-align:middle;display:inline-block;margin:auto;'>
+				<img src="./img/C1-thumb.png" width="80" style='padding:20px;vertical-align:middle;display:inline-block;margin:auto;'>
 				<div style='display: inline-block;text-align: left;vertical-align: middle;'>
 					<p>Choose <b>Positive thoughts</b></p>
 					<li>It will be fine.</li>
@@ -1995,7 +1946,7 @@
 				</div>
 				<br><br>
 
-				<img src="./icon/C1-lightbulb.png" width="80" style='padding: 20px; vertical-align:middle;display:inline-block;margin:auto;'>
+				<img src="./img/C1-lightbulb.png" width="80" style='padding: 20px; vertical-align:middle;display:inline-block;margin:auto;'>
 				<div style="display: inline-block;text-align: left;vertical-align: middle;">
 					<p>Choose <b>instructive thoughts</b>.</p>
 					<li>I need to keep training.</li>
