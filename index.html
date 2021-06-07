@@ -1220,6 +1220,11 @@
 			opacity: 1;
 		}
 
+		.video-controlled.lifeless .video-controls{
+			opacity: 0;
+			cursor: none;
+		}
+
 		.control{
 			width: 100px;
 			height: 100px;
@@ -1263,22 +1268,33 @@
 	<script type="text/javascript">
 		$(function(){
 
+			var timeLastSignOflife = new Date().getTime();
+
+			$(document).on('mousemove touchmove touchstart',function(){
+				timeLastSignOflife = new Date().getTime();
+				$('.video-controlled').removeClass('lifeless');
+			});
+
 			var wasHeight = 0;
 
-			function resize(){
+			function tickGlobal(){
+
+				var timeNow = new Date().getTime();
 				var isHeight = $(window).innerHeight();
+
 				if(isHeight != wasHeight){
 					wasHeight = isHeight;
-
 					var scale = (isHeight-30)/800;
-
 					$('.screen-container').css({transform:'scale('+scale+')'})
-
 					$('.screen-container-wrapper').css({width:450*scale,height:800*scale});
+				}
+
+				if((timeNow-timeLastSignOflife)>1000){
+					$('.video-controlled').addClass('lifeless');
 				}
 			}
 
-			setInterval(resize,1000);
+			setInterval(tickGlobal,1000);
 
 			function onNav(){
 				var idx = $('.train-stations button').index(this);
@@ -1462,6 +1478,8 @@
 				stickerPack.push( $(e.target).clone() );
 
 				videoLive.playbackRate = 1;
+
+				$('.video-controlled').addClass('lifeless');
 			}
 
 			$('video').on('ended',onVideoEnd);
@@ -1639,7 +1657,10 @@
 
 				if($s.hasClass('screen-video')){
 					videoLive = $s.find('video')[0];
+					videoLive.currentTime = 0;
 					videoLive.play();
+
+					$('.video-controlled').addClass('lifeless');
 				}
 
 				if($s.hasClass('screen-stickers')){
@@ -1793,7 +1814,7 @@
 					<source src="./res/video/prologue.mp4" type="">
 				</video>
 			</div>
-			<div class="static black-screen" style='opacity: 0.5'></div>
+			<div class="static black-screen" style='background-repeat:repeat;opacity: 0.5'></div>
 			<div class="static" style=''>
 				<br><br>
 				<div class="logo"></div>
