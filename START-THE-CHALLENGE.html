@@ -1260,6 +1260,30 @@
 			background-image: url('./assets/img/video-play-circle.svg');
 		}
 
+		.faux-search{
+			border: 1px solid #ddd;
+			background: rgba(255,255,255,0.1);
+			padding: 10px 20px;
+			border-radius: 100px;
+			display: inline-block;
+			position: relative;
+			font-size: 1.2rem;
+		}
+
+		.faux-search:before{
+			content: "";
+			
+			width: 16px;
+			height: 16px;
+			display: inline-block;
+			background-image: url('./assets/img/search.svg');
+			background-size: cover;
+			vertical-align: middle;
+			margin-right: 10px;
+		}
+
+		
+
 		
 
 
@@ -1842,8 +1866,10 @@
 			<br><br><br>
 
 				<h1 style="font-size: 3rem;">DOWNLOAD THE APP</h1><br>
-			<div class="qr-code"></div> 
-			<br>aheadofthegame.org.au/challenge	
+			<!--div class="qr-code"></div-->
+			<img src="./assets/img/app-store-badge.svg" width=250> 
+			<img src="./assets/img/google-play-badge.png" width=280> 
+			<br><br><div class="faux-search">Movember Challenge</div>
 		</div>
 		
 
