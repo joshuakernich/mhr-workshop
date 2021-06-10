@@ -1348,6 +1348,14 @@
 				$('.video-controlled').removeClass('lifeless');
 			});
 
+			$(document).on('keydown',function(e){
+				if(e.which == 37){
+					toScreenDir(-1);
+				} else if(e.which == 39){
+					toScreenDir(1);
+				}
+			});
+
 			var wasHeight = 0;
 
 			function tickGlobal(){
@@ -1379,14 +1387,17 @@
 			})
 
 			$('.slide-next').click(function(){
-				var iScreen = $('.screen').index($sCurrent);
-				toScreen(Math.min($('.screen').length-1,iScreen+1));
+				toScreenDir(1);
 			})
 
 			$('.slide-prev').click(function(){
-				var iScreen = $('.screen').index($sCurrent);
-				toScreen(Math.max(0,iScreen-1));
+				toScreenDir(-1);
 			})
+
+			function toScreenDir(dir){
+				var iScreen = $('.screen').index($sCurrent);
+				toScreen(Math.max(0,Math.min($('.screen').length-1,iScreen+dir)));
+			}
 
 			$('.screen').each(function(i){
 				var $b = $('<button></button>').appendTo('.train-stations').click(onNav);
