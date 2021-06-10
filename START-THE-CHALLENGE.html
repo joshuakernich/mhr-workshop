@@ -135,9 +135,9 @@
 
 		.cta-app-icon{
 			position: relative;
-			animation-name: jiggle;
+			/*animation-name: jiggle;
 			animation-iteration-count: infinite;
-			animation-duration: 0.2s;
+			animation-duration: 0.2s;*/
 		}
 
 		.sticker{
@@ -361,7 +361,7 @@
 
 		.stop-banner, .strategy-banner{
 			background: #1C44CE;
-			padding: 20px;
+			padding: 30px 0px;
 			text-align: center;
 			color: white;
 			
@@ -614,7 +614,44 @@
 			box-sizing: border-box;
 			
 			vertical-align: top;
+
+			position: relative;
 		}
+
+		.dash h1, .dash h2, .dash .logo{
+			position: relative;
+		}
+
+		.dash:before{
+			content: "";
+			top:0px;
+			left: 0px;
+			height: 100%;
+			width: 100%;
+			background: rgba(255,255,255,0.8);
+			display: block;
+			position: absolute;
+			opacity: 1;
+			transition: opacity 0.1s;
+		}
+
+		.dash.slammed:before{
+			opacity: 1;
+		}
+
+		.dash.clear:before{
+			display: none;
+		}
+
+
+
+		.dash:nth-of-type(1){background-image: url('./assets/img/Dash-bg_Ch1.png');}
+		.dash:nth-of-type(2){background-image: url('./assets/img/Dash-bg_Ch2.png');}
+		.dash:nth-of-type(3){background-image: url('./assets/img/Dash-bg_Ch3.png');}
+		.dash:nth-of-type(4){background-image: url('./assets/img/Dash-bg_Ch4.png');}
+		.dash:nth-of-type(5){background-image: url('./assets/img/Dash-bg_Ch5.png');}
+
+
 
 		.popup{
 			transform: scale(0);
@@ -1267,14 +1304,14 @@
 			border-radius: 100px;
 			display: inline-block;
 			position: relative;
-			font-size: 1.2rem;
+			font-size: 1.3rem;
 		}
 
 		.faux-search:before{
 			content: "";
 			
-			width: 16px;
-			height: 16px;
+			width: 22px;
+			height: 22px;
 			display: inline-block;
 			background-image: url('./assets/img/search.svg');
 			background-size: cover;
@@ -1709,11 +1746,14 @@
 
 				if($s.hasClass('screen-faux-dashboard')){
 					
+					$('.dash').removeClass('slammed');
 					var $i = $s.find('.strategy-icon').css({opacity:0}).delay(500).animate({opacity:1},300);
 
 					var slam = {s:3};
 
-					$(slam).delay(500).animate({s:1},{easing:'linear',duration:300,step:function(a){
+					$(slam).delay(500).animate({s:1},{easing:'linear',duration:300,complete:function(){
+						$('.dash').addClass('slammed');
+					},step:function(a){
 						$i.css({transform:'scale('+a+')'})
 					}})
 
@@ -1866,10 +1906,15 @@
 			<br><br><br>
 
 				<h1 style="font-size: 3rem;">DOWNLOAD THE APP</h1><br>
+				<div class="app-icon"></div>
+			<h2 style="font-size: 1.1rem;line-height:1rem;margin:10px;padding:0px;color:white;">The Challenge</h2>
 			<!--div class="qr-code"></div-->
-			<img src="./assets/img/app-store-badge.svg" width=250> 
-			<img src="./assets/img/google-play-badge.png" width=280> 
-			<br><br><div class="faux-search">Movember Challenge</div>
+			<br>
+			<div class="faux-search">Movember Challenge</div><br><br><br>
+			<img src="./assets/img/app-store-badge.svg" width=140 style='vertical-align: middle;'> 
+			<img src="./assets/img/google-play-badge.png" width=140 style='vertical-align: middle;'> 
+
+		
 		</div>
 		
 
@@ -1920,16 +1965,10 @@
 			</div>
 		</div>
 		<div class='screen is-for-facilitator white-screen click-to-next-screen vertically-centered'>
-
-			
 			<div class="strategy-banner full-span">
-				<img src="./assets/img/Choose your Thoughts.svg" width="120" style='width:100;display:block;margin:auto;'>
-				<br>
-				<h1 style='font-size: 2.5rem;'>CHOOSE YOUR THOUGHTS</h1>	
+				<h1 style='line-height:1;font-size: 4rem;display: inline-block;text-align: left;margin-right: 25px;vertical-align: middle;'>CHOOSE YOUR<br>THOUGHTS</h1>	
+				<img src="./assets/img/Choose your Thoughts.svg" width="120" style='width:100;display:inline-block;vertical-align: middle;'>
 			</div>
-				
-
-
 		</div>
 		<div class='screen is-for-facilitator white-screen click-to-next-screen vertically-centered'>
 			<div class="instruct">
@@ -2054,17 +2093,17 @@
 					<div class="strategy-icon mystery">
 						?
 					</div>
-				</div><div class="dash">
+				</div><div class="dash clear">
 					<br><br>
 					
 				<div class="logo black"></div>
-					<br><br><br><br>
+					<br><br><br><br><br>
 					<div class="cta-app-icon">
 						<div class="app-icon"></div>
-						<h2 style="font-size: 1.2rem;color:black;">The Challenge</h2>
+			<h2 style="font-size: 1.1rem;line-height:1rem;margin:10px;padding:0px;color:black;font-weight: bold;">The Challenge</h2>
 					</div>
-					<br><br><br><br>
-					<h1>Continue the<br>journey...</h1>
+					<br><br><br><br><br>
+					<h1 style="font-size: 3rem;letter-spacing: 0px;">Continue the journey...</h1>
 				</div>
 			</div>
 		</div>
