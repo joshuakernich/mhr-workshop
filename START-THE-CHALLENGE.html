@@ -762,7 +762,7 @@
 			
 			
 			text-align: left;
-			padding: 0px 80px;
+			padding: 0px 50px;
 			box-sizing: border-box;
 			color: black;
 			overflow-y: auto;
@@ -848,22 +848,23 @@
 
 		@keyframes scrollbg{
 			0%{
-				background-position: 0%;
+				background-position-y: 0%;
 			}
 			100%{
-				background-position: -38%;
+				background-position-y: 55%;
 			}
 		}
 
 		.black-screen{
 			
 			background-color: black;
-			background-image: url(./assets/img/chevron-bg-opaque.svg);
-			background-size: cover;
+			background-image: url(./assets/img/chevron-up-opaque.svg);
+			background-size: 200%;
 			animation-name: scrollbg;
-			animation-duration: 5s;
+			animation-duration: 10s;
 			animation-iteration-count: infinite;
 			animation-timing-function: linear;
+			background-position-x: center;
 		}
 
 		.white-screen{
@@ -872,13 +873,16 @@
 			color: black;
 
 
-			background: url(./assets/img/chevron-bg.svg);
+			background: url(./assets/img/chevron-up.svg);
 			background-color: #f8f8f8;
 			background-size: cover;
 			animation-name: scrollbg;
-			animation-duration: 5s;
+			animation-duration: 10s;
 			animation-iteration-count: infinite;
 			animation-timing-function: linear;
+
+			background-size: 200%;
+			background-position-x: center;
 		}
 
 		h1.screen-timer{
@@ -1204,9 +1208,6 @@
 			font-weight: normal;
 		}
 
-		
-
-
 		.qr-code{
 			width: 250px;
 			height: 250px;
@@ -1319,7 +1320,19 @@
 			margin-right: 10px;
 		}
 
-		
+		.instruct li{
+			list-style-type: "— ";
+			font-style: italic;
+			padding: 5px 0px;
+		}
+
+		.instruct li:before{
+			content: '“';
+		}
+
+		.instruct li:after{
+			content: '”';
+		}
 
 		
 
@@ -1439,8 +1452,6 @@
 				{start:41,end:50,options:['100% LOSER','😑 NUMPTY!',"I'LL NEVER LIVE THIS DOWN"]},
 			]
 
-
-			
 			var videoLive;
 			var audioLive;
 			var iVideoTicker;
@@ -1986,15 +1997,16 @@
 		<div class='screen is-for-facilitator white-screen click-to-next-screen vertically-centered'>
 			<div class="instruct">
 				<img src="./assets/img/C1-lightbulb.png" width="120" style='width:120;display:block;margin:auto;'><br>
-				<h1>INSTRUCTIVE THOUGHTS</h1>
+				<h1>INSTRUCTIONAL THOUGHTS</h1>
 				
-					<p><b>Instructive thoughts</b> are actionable.</p>
+					<p><b>Instructional thoughts</b> are actionable.</p>
 					<li>I just need to keep training.</li>
 					<li>I need to work harder.</li>
 					<li>I just need to try again.</li>
 					<p><b>Instructive thoughts</b> focus on what you should do, not what you shouldn't do.</p>
-					<p style="text-align: center;"><i>"I should work on my catching."</i><br>
-					instead of<br><i>"Stop dropping the ball."</i></p>
+					<li>I should work on my catching.</li>
+					<b>instead of</b>
+					<li>Stop dropping the ball.</li>
 
 			</div>
 		</div>
