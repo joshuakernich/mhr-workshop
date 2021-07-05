@@ -222,6 +222,8 @@
 			pointer-events: none;
 		}
 
+
+
 		.overlay{
 			border-top: 0px solid black;
 			border-bottom: 0px solid black;
@@ -407,6 +409,8 @@
 
 		.swipe-prompt{
 			background: rgba(0,0,0,0.4);
+			visibility: transparent;
+			opacity: 0.001;
 		}
 
 		.finger{
@@ -1332,7 +1336,45 @@
 			content: '”';
 		}
 
-		
+		.feature-overlay{
+			position: absolute;
+			top: 0px;
+			left: 0px;
+			right: 0px;
+			bottom: 0px;
+			box-sizing: border-box;
+			padding-top: 100px;
+			text-align: center;
+			background: rgba(36,36,36,0.75);
+			display: none;
+		}
+
+		.feature-overlay p{
+			color: white;
+			text-align: left;
+			width: 80%;
+			margin: 10%;
+			font-size: 1.3rem;
+		}
+
+		.reflection-overlay .sticker,.feature-overlay .sticker{
+			margin: 50px;
+			transform: rotate(-5deg) scale(1.5);
+			animation: none;
+		}
+
+		.feature-overlay button{
+			width: 80%;
+			background: #1C44CE;
+			padding: 8px;
+			color: white;
+			font-family: "HeaderFont";
+			font-size: 1.7rem;
+			font-weight: normal;
+			border: none;
+			letter-spacing: 2px;
+			font-weight: normal;
+		}
 
 
 	</style>
@@ -1457,8 +1499,8 @@
 			var iReflection = 0;
 
 			var moments = [
-				{start:19,end:29,options:['THIS SUCKS',"SCREW-UP 😩",'$^#&%!']},
-				{start:41,end:50,options:['100% LOSER','😑 NUMPTY!',"I'LL NEVER LIVE THIS DOWN"]},
+				{start:19,end:29,options:['THIS SUCKS',"SCREW-UP 😩",'$^#&%!'],f:"Our brains are built to find negatives. It helps us recognise when we've made mistakes, but can hold us back."},
+				{start:41,end:50,options:['100% LOSER','😑 NUMPTY!',"I'LL NEVER LIVE THIS DOWN"],f:"Our negative thoughts can be very dramatic. Sometimes this means we beat ourselves up, and make things worse."},
 			]
 
 			var videoLive;
@@ -1550,16 +1592,43 @@
 				var $screen = $(e.target).closest('.screen');
 				var $party = $screen.find('.stickers');
 
-				$party.empty();
-				$(e.target).addClass('still').appendTo($party).css({transform:'scale(2) rotate(-5deg)'}).delay(2000).animate({opacity:0});
+				
+				
 				$screen.find('.overlay').removeClass('active');
-				iMoment++;
 
 				stickerPack.push( $(e.target).clone() );
 
-				videoLive.playbackRate = 1;
 
 				$('.video-controlled').addClass('lifeless');
+			
+				
+				$('.feature-overlay').empty().css({opacity:1}).show();
+
+				var scale = Math.min(2,440/$(this).outerWidth());
+				$(this).appendTo('.feature-overlay').css({top:100,transform:'scale('+scale+')'}).animate({top:0});
+				
+
+
+				$party.empty();
+
+
+				$('<p>').appendTo('.feature-overlay').html(moments[iMoment].f).css({opacity:0}).delay(1000).animate({opacity:1});
+				
+				$('<button>CARRY ON</button>').appendTo('.feature-overlay').css({opacity:0}).delay(2500).animate({opacity:1}).click(onContinue);
+
+
+				$('.feature-overlay').off('click',onContinue);
+				$('.feature-overlay').on('click',onContinue);
+
+				$('.stickers').empty();
+				$('.overlay').removeClass('active');
+			}
+
+			function onContinue(){
+				$('.feature-overlay').off('click',onContinue);
+				$('.feature-overlay').animate({opacity:0});
+				iMoment++;
+				videoLive.playbackRate = 1;
 			}
 
 			$('video').on('ended',onVideoEnd);
@@ -1587,7 +1656,17 @@
 				$('.stop').hide();
 				$('.swipe-prompt').show();
 
-				var iTickStick = setInterval(function(){
+				$('.screen-stop-swipe .sticker').each(function(){
+					var p = $(this).position();
+					$(this).delay(500 + 800-p.top + Math.random()*500).animate({top:'+900'},{duration:500,easing:'easeInBack'});
+
+				})
+
+				setTimeout(function(){
+					nextScreen($('.stop'));
+				},2500);
+
+				/*var iTickStick = setInterval(function(){
 
 					$('.dead:not(.gone)').each(function(){
 						var d = $(this).data();
@@ -1608,7 +1687,7 @@
 						nextScreen($('.stop'));
 					}
 
-				},20);
+				},20);*/
 			});
 
 			var isMouseDown = false;
@@ -1792,10 +1871,12 @@
 				}
 
 				if($s.find('.card-deck-instruct').length){
-
-					
-
 					$s.find('.card-deck-instruct').hide();
+				}
+
+				if($s.is('.the-big-question')){
+					$s.find('h1').stop().css({opacity:0}).delay(1000).animate({opacity:1});
+					$s.find('h2').stop().css({opacity:0}).delay(2500).animate({opacity:1});
 				}
 
 				if($s.find('.screen-timer').length){
@@ -1945,7 +2026,7 @@
 				</video>
 			</div>
 		</div>
-		<div class="screen is-for-facilitator phone-down black-screen vertically-centered click-to-next-screen">
+		<div class="screen is-for-facilitator phone-down black-screen vertically-centered click-to-next-screen the-big-question">
 
 			<div class="full-span"><h1>WHAT'S BEEN<br>ONE OF YOUR MOST<br>CHALLENGING MOMENTS?</h1><h2 style="font-weight: normal;">...ON or OFF the field?</h2></div>
 		
@@ -1956,6 +2037,7 @@
 					<source src="./assets/video/ep-1.mp4" type="">
 				</video>
 			</div>
+			<div class="feature-overlay"></div>
 			<div class='overlay vertically-centered'>
 				<h1>What's he thinking?</h1>
 				<div class='stickers full-span'></div>
@@ -2012,7 +2094,7 @@
 					<li>I just need to keep training.</li>
 					<li>I need to work harder.</li>
 					<li>I just need to try again.</li>
-					<p><b>Instructive thoughts</b> focus on what you should do, not what you shouldn't do.</p>
+					<p><b>Instructional thoughts</b> focus on what you should do, not what you shouldn't do.</p>
 					<li>I should work on my catching.</li>
 					<b>instead of</b>
 					<li>Stop dropping the ball.</li>
