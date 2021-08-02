@@ -1642,7 +1642,9 @@
 					})
 					
 				}
-				else{
+				else if($(videoLive).closest('.pause-at-end').length){
+					// do nothing
+				} else {
 					nextScreen(this);
 				} 
 			}
@@ -1783,6 +1785,7 @@
 
 				if( iScreen < $('.screen').length ) toScreen(iScreen);
 			}
+
 
 			function toScreen(iScreen){
 
@@ -2154,6 +2157,10 @@
 					<source src="./assets/video/ep-1-outro.mp4" type="">
 				</video>
 			</div>
+		</div>
+		<div class="screen is-for-facilitator click-to-next-screen">
+			<div class="static" style='background-image: url(./assets/img/outro-still.png);background-size: cover;'></div>
+			<div class="static black-screen" style='background-repeat:repeat;opacity: 0.5'></div>
 		</div>
 		<div class="screen screen-video is-for-facilitator">
 			<div class="video-controlled">
